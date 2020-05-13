@@ -1,0 +1,188 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Chess &#8212; Personal Projects 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Main module" href="chess.html" />
+    <link rel="prev" title="Welcome to Harnaman’s Project-Space!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="chess.html" title="Main module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Harnaman’s Project-Space!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Personal Projects 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="chess">
+<h1><strong>Chess</strong><a class="headerlink" href="#chess" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/Chess_board_opening_staunton.jpg"><img alt="_images/Chess_board_opening_staunton.jpg" class="align-right" src="_images/Chess_board_opening_staunton.jpg" style="width: 30%; height: 18em;" /></a>
+<div class="section" id="project-details">
+<span id="chess-top"></span><h2><strong>Project Details</strong><a class="headerlink" href="#project-details" title="Permalink to this headline">¶</a></h2>
+<p>The project aims to read and process <code class="docutils literal notranslate"><span class="pre">.pgn</span></code> files which contain the hierarchy of moves, along with the statistics of a game of Chess.
+The program displays the status of the chess board after performing each move and the final position of pieces on the board after the game is over.
+Any <code class="docutils literal notranslate"><span class="pre">.pgn</span></code> or <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file can be given as an input to this program.</p>
+<p>Read below about the game and associated notations, or proceed to the code documentation</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chess.html">Main module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chess.html#pythonic-approach-to-play-chess">Pythonic Approach to play Chess</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PgnParser.html">PgnParser module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pawn.html">pawn module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="about-chess">
+<h2><strong>About Chess</strong><a class="headerlink" href="#about-chess" title="Permalink to this headline">¶</a></h2>
+<p>Chess is a two-player strategy board game played on a checkered board with 64 squares arranged in an 8×8 grid.
+Play involves no hidden information. Each player begins with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. Each piece type moves differently, with the most powerful being the queen and the least powerful the pawn. The objective is to checkmate the opponent’s king by placing it under an inescapable threat of capture.
+In addition to checkmate, a player wins the game if the opponent resigns, or, in a timed game, runs out of time. There are also several ways that a game can end in a draw.</p>
+</div>
+<div class="section" id="moves-in-a-chess-game">
+<h2><strong>Moves in a Chess Game</strong><a class="headerlink" href="#moves-in-a-chess-game" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The king moves one square in any direction. The king also has a special move called castling that involves also moving a rook. However, for a king to play a castling move, certain conditions must be met.</li>
+<li>A rook can move any number of squares along a rank or file, but cannot leap over other pieces. Along with the king, a rook is involved during the king’s castling move.</li>
+<li>A bishop can move any number of squares diagonally, but cannot leap over other pieces.</li>
+<li>The queen combines the power of a rook and bishop and can move any number of squares along a rank, file, or diagonal, but cannot leap over other pieces.</li>
+<li>A knight moves to any of the closest squares that are not on the same rank, file, or diagonal. (Thus the move forms an “L”-shape: two squares vertically and one square horizontally, or two squares horizontally and one square vertically.) The knight is the only piece that can leap over other pieces.</li>
+<li>A pawn can move forward to the unoccupied square immediately in front of it on the same file, or on its first move it can advance two squares along the same file, provided both squares are unoccupied (black dots in the diagram); or the pawn can capture an opponent’s piece on a square diagonally in front of it on an adjacent file, by moving to that square (black “x”s). A pawn has two special moves: the en passant capture and promotion.</li>
+</ul>
+<img alt="_images/moves.png" class="align-center" src="_images/moves.png" />
+<p>For more information on the game, visit <a class="reference external" href="https://en.wikipedia.org/wiki/Chess">source</a></p>
+<p>Go to the top <a class="reference internal" href="#chess-top"><span class="std std-ref">Project Details</span></a></p>
+</div>
+<div class="section" id="the-portable-game-notation-pgn">
+<h2><strong>The Portable Game Notation (PGN)</strong><a class="headerlink" href="#the-portable-game-notation-pgn" title="Permalink to this headline">¶</a></h2>
+<p>Portable Game Notation (PGN) is a plain text computer-processible format for recording chess games (both the moves and related data), supported by many chess programs.
+The chess moves themselves are given in algebraic chess notation. The usual filename extension is <code class="docutils literal notranslate"><span class="pre">.pgn</span></code>.
+PGN code begins with a set of “tag pairs” (a tag name and its value), followed by the “movetext” (chess moves with optional commentary).</p>
+<p><strong>A sample PGN file</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Event</span> <span class="s2">&quot;F/S Return Match&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Site</span> <span class="s2">&quot;Belgrade, Serbia JUG&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Date</span> <span class="s2">&quot;1992.11.04&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Round</span> <span class="s2">&quot;29&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">White</span> <span class="s2">&quot;Fischer, Robert J.&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Black</span> <span class="s2">&quot;Spassky, Boris V.&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Result</span> <span class="s2">&quot;1/2-1/2&quot;</span><span class="p">]</span>
+
+<span class="mf">1.</span> <span class="n">e4</span> <span class="n">e5</span> <span class="mf">2.</span> <span class="n">Nf3</span> <span class="n">Nc6</span> <span class="mf">3.</span> <span class="n">Bb5</span> <span class="n">a6</span> <span class="p">{</span><span class="n">This</span> <span class="n">opening</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">the</span> <span class="n">Ruy</span> <span class="n">Lopez</span><span class="o">.</span><span class="p">}</span>
+<span class="mf">4.</span> <span class="n">Ba4</span> <span class="n">Nf6</span> <span class="mf">5.</span> <span class="n">O</span><span class="o">-</span><span class="n">O</span> <span class="n">Be7</span> <span class="mf">6.</span> <span class="n">Re1</span> <span class="n">b5</span> <span class="mf">7.</span> <span class="n">Bb3</span> <span class="n">d6</span> <span class="mf">8.</span> <span class="n">c3</span> <span class="n">O</span><span class="o">-</span><span class="n">O</span> <span class="mf">9.</span> <span class="n">h3</span> <span class="n">Nb8</span> <span class="mf">10.</span> <span class="n">d4</span> <span class="n">Nbd7</span>
+<span class="mf">11.</span> <span class="n">c4</span> <span class="n">c6</span> <span class="mf">12.</span> <span class="n">cxb5</span> <span class="n">axb5</span> <span class="mf">13.</span> <span class="n">Nc3</span> <span class="n">Bb7</span> <span class="mf">14.</span> <span class="n">Bg5</span> <span class="n">b4</span> <span class="mf">15.</span> <span class="n">Nb1</span> <span class="n">h6</span> <span class="mf">16.</span> <span class="n">Bh4</span> <span class="n">c5</span> <span class="mf">17.</span> <span class="n">dxe5</span>
+<span class="n">Nxe4</span> <span class="mf">18.</span> <span class="n">Bxe7</span> <span class="n">Qxe7</span> <span class="mf">19.</span> <span class="n">exd6</span> <span class="n">Qf6</span> <span class="mf">20.</span> <span class="n">Nbd2</span> <span class="n">Nxd6</span> <span class="mf">21.</span> <span class="n">Nc4</span> <span class="n">Nxc4</span> <span class="mf">22.</span> <span class="n">Bxc4</span> <span class="n">Nb6</span>
+<span class="mf">23.</span> <span class="n">Ne5</span> <span class="n">Rae8</span> <span class="mf">24.</span> <span class="n">Bxf7</span><span class="o">+</span> <span class="n">Rxf7</span> <span class="mf">25.</span> <span class="n">Nxf7</span> <span class="n">Rxe1</span><span class="o">+</span> <span class="mf">26.</span> <span class="n">Qxe1</span> <span class="n">Kxf7</span> <span class="mf">27.</span> <span class="n">Qe3</span> <span class="n">Qg5</span> <span class="mf">28.</span> <span class="n">Qxg5</span>
+<span class="n">hxg5</span> <span class="mf">29.</span> <span class="n">b3</span> <span class="n">Ke6</span> <span class="mf">30.</span> <span class="n">a3</span> <span class="n">Kd6</span> <span class="mf">31.</span> <span class="n">axb4</span> <span class="n">cxb4</span> <span class="mf">32.</span> <span class="n">Ra5</span> <span class="n">Nd5</span> <span class="mf">33.</span> <span class="n">f3</span> <span class="n">Bc8</span> <span class="mf">34.</span> <span class="n">Kf2</span> <span class="n">Bf5</span>
+<span class="mf">35.</span> <span class="n">Ra7</span> <span class="n">g6</span> <span class="mf">36.</span> <span class="n">Ra6</span><span class="o">+</span> <span class="n">Kc5</span> <span class="mf">37.</span> <span class="n">Ke1</span> <span class="n">Nf4</span> <span class="mf">38.</span> <span class="n">g3</span> <span class="n">Nxh3</span> <span class="mf">39.</span> <span class="n">Kd2</span> <span class="n">Kb5</span> <span class="mf">40.</span> <span class="n">Rd6</span> <span class="n">Kc5</span> <span class="mf">41.</span> <span class="n">Ra6</span>
+<span class="n">Nf2</span> <span class="mf">42.</span> <span class="n">g4</span> <span class="n">Bd3</span> <span class="mf">43.</span> <span class="n">Re6</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>To know more PGN notation, visit <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Game_Notation">PGN Wikipedia</a></p>
+<p>To know more about Algebraic Chess Notation for chess moves, <a class="reference external" href="https://en.wikipedia.org/wiki/Algebraic_notation_(chess)">click here</a></p>
+<p>Go to the top <a class="reference internal" href="#chess-top"><span class="std std-ref">Project Details</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><strong>Chess</strong></a><ul>
+<li><a class="reference internal" href="#project-details"><strong>Project Details</strong></a></li>
+<li><a class="reference internal" href="#about-chess"><strong>About Chess</strong></a></li>
+<li><a class="reference internal" href="#moves-in-a-chess-game"><strong>Moves in a Chess Game</strong></a></li>
+<li><a class="reference internal" href="#the-portable-game-notation-pgn"><strong>The Portable Game Notation (PGN)</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Harnaman’s Project-Space!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="chess.html"
+                        title="next chapter">Main module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/modules.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="chess.html" title="Main module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Harnaman’s Project-Space!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Personal Projects 0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Harnaman Kaur.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

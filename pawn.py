@@ -17,22 +17,41 @@ promoted_from = {WHITE: "7", BLACK: "2"}
 
 
 def is_regular_pawn_move(move):
+    '''
+    ``return type: bool``
+    returns True if the move is an ordinary pawn move
+    '''
     return re.fullmatch("[Pp][a-h]x?[a-h][2-7]", move) is not None
 
 
 def is_capture(move):
+    '''
+    ``return type: bool``
+    returns True if the move is a pawn capture
+    '''
     return re.fullmatch("[Pp][a-h]x?[a-h][2-7]", move) is not None
 
 
 def is_promotion(move):
+    '''
+    ``return type: bool``
+    returns True if the move is an pawn promotion
+    '''
     return re.fullmatch("[Pp][a-h](x[a-h]?[18])[RNBQrnbq]", move) is not None
 
 
 def is_enpassant(move):
+    '''
+    ``return type: bool``
+    returns True if the move is an En Passant
+    '''
     return move.endswith("ep")
 
 
 def move_pawn(move, board_view, piece_view):
+    '''
+    Updates the board with a regular pawn move
+    '''
     pawn, to_square = move[0], move[1::]
     to_file, to_rank = to_square[0], to_square[1]
     for move_from in can_move_from[pawn][to_rank]:
@@ -47,6 +66,9 @@ def move_pawn(move, board_view, piece_view):
 
 
 def capture(move, board_view, piece_view):
+    '''
+    Updates the board with a pawn capture and deletes the captured piece
+    '''
     move = move.replace("x", "")
     pawn, from_file, to_square = move[0], move[1], move[2::]
     captured_piece = board_view[to_square]
@@ -61,6 +83,9 @@ def capture(move, board_view, piece_view):
 
 
 def promote(move, board_view, piece_view):
+    '''
+    This function handles a pawn promotion move.
+    '''
     if "x" in move:
         # eg gxf8Q
         pawn, from_file, promoted_at, promoted_to = move[0], move[1], move[3:5], move[-1]

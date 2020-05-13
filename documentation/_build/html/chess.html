@@ -1,0 +1,215 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Main module &#8212; Personal Projects 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PgnParser module" href="PgnParser.html" />
+    <link rel="prev" title="Chess" href="modules.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PgnParser.html" title="PgnParser module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Chess"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Personal Projects 0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U"><strong>Chess</strong></a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="main-module">
+<h1>Main module<a class="headerlink" href="#main-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pythonic-approach-to-play-chess">
+<h2>Pythonic Approach to play Chess<a class="headerlink" href="#pythonic-approach-to-play-chess" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Pre-process the <code class="docutils literal notranslate"><span class="pre">.pgn</span></code> file to get obtain only the move of the game</li>
+<li>Read each move and update the board. Display the updated board if the user wishes so.</li>
+<li>Handle exceptional cases like En Passant, Castling, Capture, etc.</li>
+<li>Display the final position of all the pieces on the board.</li>
+</ul>
+<span class="target" id="module-chess"></span><dl class="function">
+<dt id="chess.castle">
+<code class="descclassname">chess.</code><code class="descname">castle</code><span class="sig-paren">(</span><em>move</em>, <em>board_view</em>, <em>piece_view</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.castle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function performs the castling move, both the king side casting and queen side castling.
+An updated version of the board.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.get_from_square">
+<code class="descclassname">chess.</code><code class="descname">get_from_square</code><span class="sig-paren">(</span><em>move</em>, <em>board_view</em>, <em>candidates</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.get_from_square" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>move</strong> – move in play</li>
+<li><strong>board_view</strong> – position of pieces on board</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">type:</span> <span class="pre">str</span></code></p>
+<p>returns the initial position of a piece given its final position</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.is_capture">
+<code class="descclassname">chess.</code><code class="descname">is_capture</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.is_capture" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">type:</span> <span class="pre">bool</span></code></p>
+<p>returns True if the move in play is a capture move</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.is_castling">
+<code class="descclassname">chess.</code><code class="descname">is_castling</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.is_castling" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">type:</span> <span class="pre">bool</span></code></p>
+<p>returns True if the move in play is a Castling move (King side or Queen side Castling)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.is_pawn_move">
+<code class="descclassname">chess.</code><code class="descname">is_pawn_move</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.is_pawn_move" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">type:</span> <span class="pre">bool</span></code></p>
+<p>returns True if the move in play is a pawn move</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.make_move">
+<code class="descclassname">chess.</code><code class="descname">make_move</code><span class="sig-paren">(</span><em>piece</em>, <em>move_from</em>, <em>move_to</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.make_move" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>piece</strong> – chess piece to be moved in the current move</li>
+<li><strong>move_from</strong> – initial position of piece</li>
+<li><strong>move_to</strong> – final position of piece</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Update the board and piece statistics with the current move in play</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.not_blocked">
+<code class="descclassname">chess.</code><code class="descname">not_blocked</code><span class="sig-paren">(</span><em>board_view</em>, <em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.not_blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">type:</span> <span class="pre">bool</span></code>
+returns True if there is no obstruction on board between a and b</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.process_moves">
+<code class="descclassname">chess.</code><code class="descname">process_moves</code><span class="sig-paren">(</span><em>moves</em><span class="sig-paren">)</span><a class="headerlink" href="#chess.process_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function breaks each sequence in the list of all_moves into black or white move depending on the course of game.
+It then passes the respective moves to make_move() for the moves to be updated on the board.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess.setup">
+<code class="descclassname">chess.</code><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#chess.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialises the chess board to default state before the game begins</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Main module</a><ul>
+<li><a class="reference internal" href="#pythonic-approach-to-play-chess">Pythonic Approach to play Chess</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter"><strong>Chess</strong></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="PgnParser.html"
+                        title="next chapter">PgnParser module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/chess.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PgnParser.html" title="PgnParser module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Chess"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Personal Projects 0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" ><strong>Chess</strong></a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Harnaman Kaur.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

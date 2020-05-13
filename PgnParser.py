@@ -1,28 +1,15 @@
 import re
 
-FILES = "abcdefgh"
-RANKS = "12345678"
-SPACE = " "
-EnPassant = "e.p."
 '''
 Read the pgn file provided by the user and pre process the file to extract meaningful data, i.e. moves
 '''
 
 
-def setup():
-    squares = [y+x for x in '12345678' for y in 'abcdefgh']
-    start = 'RNBQKBNR' + 'P'*8 + " "*32+'p'*8 + 'rnbqkbnr'
-
-    board_view = {square: piece for square, piece in zip(squares, start)}
-    piece_view = {_: [] for _ in "BKNPQRbknpqr"}
-    for sq in board_view:
-        piece = board_view[sq]
-        if not piece == " ":
-            piece_view[piece].append(sq)
-    return board_view, piece_view
-
-
-def pgn_to_moves(game_file: str) -> [str]:
+def pgn_to_moves(game_file):
+    '''
+    Reads a ``.pgn`` file.
+    Further, beggining remarks, comments, indexing, etc are removed from the input so that only the moves processed further.
+    '''
     raw_moves = SPACE.join([line.strip() for line in open(game_file)])
 
     # remove beginning information lines i.e. text within []
@@ -44,14 +31,19 @@ def pgn_to_moves(game_file: str) -> [str]:
     return pre_process_moves(all_moves[1:-1]) + [pre_process_last_move(last_move)]
 
 
-def pre_process_moves(moves: [str]) -> [str]:
+def pre_process_moves(moves):
+    '''
+    ``return type: list[ str ]``
+    returns a list of sequence of black, white moves in a game
+    '''
     return [pre_process_a_move(one_move) for one_move in moves]
 
 
-def pre_process_a_move(move: str) -> str:
+def pre_process_a_move(move):
     '''
+    ``return type: str``
     add 'P' for pawn move
-    capital notations for white, small for black
+    capital notations for white pieces, small for black
     '''
     wmove, bmove = move.split()
     if wmove[0] in 'abcdefgh':
@@ -62,7 +54,12 @@ def pre_process_a_move(move: str) -> str:
     return clean(wmove)+SPACE+clean(bmove)
 
 
-def pre_process_last_move(move: str) -> str:
+def pre_process_last_move(move):
+    '''
+    ``return type: str``
+    As the last move may contain extra information regarding the result of a match, it is handled separately.
+    All data except the move is removed.
+    '''
     move = move.strip()
     if SPACE in move:
         return pre_process_a_move(move)
@@ -72,9 +69,17 @@ def pre_process_last_move(move: str) -> str:
 
 
 def clean(move):
+    '''
+    ``return type: str``
+    Each move is filtered to remove any data other than Alpha-numeric characters
+    '''
     return ''.join(filter(str.isalnum, move))
 
 
 if __name__ == "__main__":
+    FILES = "abcdefgh"
+    RANKS = "12345678"
+    SPACE = " "
+    EnPassant = "e.p."
     moves = pgn_to_moves(r'game.txt')
     print(moves)
